@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bulma/css/bulma.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -123,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "thongkao-front"
+    }
+  },
+  "defaultProject": "thongkao-front",
+  "cli": {
+    "analytics": "a109b0a7-ef69-47c5-93db-c6f51934b482"
+  }
 }
