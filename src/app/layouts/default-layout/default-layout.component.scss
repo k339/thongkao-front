@@ -4,15 +4,19 @@
 }
 
 .banner-yellow {
-  font-size: 20px;
+  font-size: 28px;
   font-weight: bold;
   color: #f59131;
 }
 
 .banner-black {
-  font-size: 20px;
+  font-size: 28px;
   font-weight: bold;
   color: #231f20;
+}
+
+.banner {
+  padding-top: 0;
 }
 
 @media only screen and (max-width: 414px) {
