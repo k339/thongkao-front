@@ -1,15 +1,25 @@
-.body-home-page {
+.body-section-1 {
   background-image: url(src/assets/images/612611-PNIVGL-888.jpg);
   background-position-y: 50%;
   width: 100%;
-  min-height: calc(100vh - 44px);
+  min-height: calc(100vh - 45px);
   background-size: cover;
+  margin-top: 55px;
+}
+.body-section-2 {
+  background-image: url(src/assets/images/229999-P1ZDPX-324.jpg);
+  background-position-y: 50%;
+  width: 100%;
+  min-height: calc(100vh - 52px);
+  background-size: cover;
+  margin-top: 52px;
 }
 .detail {
-  padding: 130px 40px;
+  padding-top: 130px;
+  padding-left: 70px;
   font-size: 28px;
   font-weight: bold;
-  color: #231f20;
+  color: #333333;
 }
 .section-1 {
   margin: auto;
@@ -23,7 +33,7 @@
   padding-bottom: 20px;
 }
 .fas {
-  border: 8px solid #f59131;;
+  border: 8px solid #FFAB40;
   width: 150px;
   height: 150px;
   border-radius: 50%;
@@ -36,13 +46,13 @@
 }
 .fa-broadcast-tower:before {
   font-size: 80px;
-  color: #231f20;;
+  color: #333333;;
   position: relative;
   top: 28px;
 }
 .fa-tools:before {
   font-size: 80px;
-  color: #231f20;;
+  color: #333333;;
   position: relative;
   top: 28px;
 }
@@ -50,4 +60,33 @@
 .description {
   padding-top: 25px;
   font-size: 24px;
+}
+.title-section-2 {
+  font-weight: bold;
+  color: #FF6900;
+}
+.detail-section-2 {
+  padding-top: 130px;
+  padding-left: 170px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333333;
+}
+.section-3 {
+  padding: 50px 0;
+}
+.title-section-3 {
+  font-size: 34px;
+  padding-bottom: 10px;
+  color: #363636;
+  font-weight: 600;
+  border-bottom: 3px solid #FFAB40;
+}
+.portfolio {
+  padding-top: 20px;
+}
+@media screen and (max-width: 1023px) {
+  .bd-lead {
+    padding: 1.5rem;
+  }
 }
