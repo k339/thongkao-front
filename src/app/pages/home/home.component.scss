@@ -64,6 +64,7 @@
 .title-section-2 {
   font-weight: bold;
   color: #FF6900;
+  font-size: 24px;
 }
 .detail-section-2 {
   padding-top: 130px;
@@ -73,7 +74,7 @@
   color: #333333;
 }
 .section-3 {
-  padding: 50px 0;
+  padding: 30px 0;
 }
 .title-section-3 {
   font-size: 34px;
@@ -84,6 +85,13 @@
 }
 .portfolio {
   padding-top: 20px;
+}
+.see-more:hover {
+  color: #3273DC;
+}
+.see-all-portfolio {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 @media screen and (max-width: 1023px) {
   .bd-lead {
