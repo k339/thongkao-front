@@ -1,8 +1,18 @@
-<div class="container">
-  <div class="columns">
-    <div class="column is-12 has-text-centered lock-padding">
-      <i class="fas fa-lock"></i><br>
-      Admin Only
+<div class="container py-3">
+  <div class="columns py-3 bd-lead">
+    <div class="column is-3-desktop">
+      <aside class="menu">
+        <p class="menu-label">
+          Menu
+        </p>
+        <ul class="menu-list">
+          <li><a routerLink="/admin/main/portfolio">Portfolio</a></li>
+          <li><a>Employee</a></li>
+        </ul>
+      </aside>
+    </div>
+    <div class="column is-9-desktop admin-content">
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

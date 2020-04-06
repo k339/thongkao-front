@@ -1,0 +1,30 @@
+.table {
+  width: 100%;
+}
+.title-section {
+  padding-bottom: 10px;
+  color: #363636;
+  font-weight: 600;
+  border-bottom: 3px solid #FFAB40;
+  span {
+    font-size: 34px;
+  }
+  .fa-plus:before {
+    color: white;
+  }
+}
+.file-label {
+  width: 100%;
+}
+.file-name {
+  min-width: 250px !important;
+}
+.notification {
+  padding: 5px 20px;
+}
+.fa-minus-circle:before {
+  color: white;
+}
+.notification {
+  margin-bottom: 0.3rem;
+}

@@ -1,16 +1,21 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {AdminMainComponent} from './components/admin-main/admin-main.component';
 import {AdminLoginComponent} from './components/admin-login/admin-login.component';
+import {AdminMainComponent} from './components/admin-main/admin-main.component';
+import {AdminPortfolioComponent} from './components/admin-portfolio/admin-portfolio.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: AdminMainComponent
+    component: AdminLoginComponent
   },
   {
-    path: 'login',
-    component: AdminLoginComponent
+    path: 'main',
+    component: AdminMainComponent,
+    children: [{
+      path: 'portfolio',
+      component: AdminPortfolioComponent
+    }]
   }
 ];
 
