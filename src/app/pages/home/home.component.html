@@ -46,25 +46,16 @@
 <div class="container bd-lead">
   <div class="columns">
     <div class="column">
-      <div class="section-3">
-        <div class="title-section-3">ผลงานของบริษัท</div>
-        <div class="columns portfolio">
-          <div class="column is-3-desktop is-12-mobile">
-            <app-portfolio-card></app-portfolio-card>
-          </div>
-          <div class="column is-3-desktop is-12-mobile">
-            <app-portfolio-card></app-portfolio-card>
-          </div>
-          <div class="column is-3-desktop is-12-mobiled">
-            <app-portfolio-card></app-portfolio-card>
-          </div>
-          <div class="column is-3-desktop is-12-mobiled">
+      <div class="section">
+        <div class="title-section">ผลงานของบริษัท</div>
+        <div class="columns is-multiline portfolio">
+          <div *ngFor="let item of [1,2,3,4]" class="column is-3-desktop is-12-mobile">
             <app-portfolio-card></app-portfolio-card>
           </div>
         </div>
         <div class="columns">
           <div class="column is-12 has-text-right see-all-portfolio">
-            <a href="#" class="see-more">ดูผลงานทั้งหมด &gt;</a>
+            <a routerLink="/portfolio" class="see-more">ดูผลงานทั้งหมด &gt;</a>
           </div>
         </div>
       </div>
