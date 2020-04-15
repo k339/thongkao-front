@@ -3,20 +3,34 @@ import {RouterModule, Routes} from '@angular/router';
 import {AdminLoginComponent} from './components/admin-login/admin-login.component';
 import {AdminMainComponent} from './components/admin-main/admin-main.component';
 import {AdminPortfolioComponent} from './components/admin-portfolio/admin-portfolio.component';
+import {AdminUserComponent} from './components/admin-user/admin-user.component';
+import {AuthGuardService} from '../../core/auth-guard.service';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: AdminLoginComponent
+  { path: '',
+    redirectTo: '/admin/portfolio',
+    pathMatch: 'full'
   },
   {
-    path: 'main',
+    path: '',
     component: AdminMainComponent,
-    children: [{
-      path: 'portfolio',
-      component: AdminPortfolioComponent
-    }]
-  }
+    children: [
+      {
+        path: 'portfolio',
+        component: AdminPortfolioComponent,
+        canActivate: [AuthGuardService]
+      },
+      {
+        path: 'user',
+        component: AdminUserComponent,
+        canActivate: [AuthGuardService]
+      }
+    ]
+  },
+  {
+    path: 'login',
+    component: AdminLoginComponent,
+  },
 ];
 
 @NgModule({

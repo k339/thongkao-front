@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {LocalStorageService} from '../../services/local-storage.service';
 
 @Component({
   selector: 'app-admin-layout',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminLayoutComponent implements OnInit {
 
-  constructor() { }
+  username = '';
+
+  constructor(private localStorageService: LocalStorageService) { }
 
   ngOnInit(): void {
+    this.username = this.localStorageService.getUsername();
   }
 
 }

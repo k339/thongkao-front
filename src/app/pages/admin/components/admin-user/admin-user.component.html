@@ -1,0 +1,100 @@
+<div class="container">
+  <div class="title-section navbar-menu">
+    <span class="navbar-start">User</span>
+    <button class="button is-black navbar-end" (click)="showModalCreate()">
+      <i class="fas fa-plus"></i>
+    </button>
+  </div>
+  <div class="table-container">
+    <table class="table is-striped">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>name</th>
+        <th>username</th>
+        <th>email</th>
+        <th>rules</th>
+        <th>edit</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of [1,2,3,4,5,6,7,8,9,10]">
+        <td>1</td>
+        <td>Jon Snow</td>
+        <td>test</td>
+        <td>test@gmail.com</td>
+        <td>Admin, Web master</td>
+        <td><button class="button is-small is-warning"><i class="fas fa-edit"></i></button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="modal" [ngClass]="{'is-active': isShowModalCreate}">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Create User</p>
+      <button (click)="isShowModalCreate = !isShowModalCreate" class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <form>
+        <div class="field">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="Jon snow">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Username</label>
+          <div class="control has-icons-left has-icons-right">
+            <input class="input" type="text" placeholder="jon.snow@gmail.com">
+            <span class="icon is-small is-left">
+              <i class="fas fa-user"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Email</label>
+          <div class="control has-icons-left has-icons-right">
+            <input class="input" type="email" placeholder="Email input">
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Password</label>
+          <div class="control has-icons-left has-icons-right">
+            <input class="input" type="password" placeholder="Password">
+            <span class="icon is-small is-left">
+              <i class="fas fa-lock"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Rules</label>
+          <div class="control">
+            <label class="checkbox">
+              <input type="checkbox">
+              Admin
+            </label>
+          </div>
+          <div class="control">
+            <label class="checkbox">
+              <input type="checkbox">
+              Web master
+            </label>
+          </div>
+        </div>
+      </form>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" (click)="submit()">Submit</button>
+    </footer>
+  </div>
+</div>
