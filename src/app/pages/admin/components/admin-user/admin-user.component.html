@@ -23,7 +23,12 @@
         <td>{{item?.name}}</td>
         <td>{{item?.username}}</td>
         <td>{{item?.email}}</td>
-        <td>{{item?.rules}}</td>
+        <td>
+          <ng-container *ngFor="let rule of item?.appRules">
+            <ng-container *ngIf="rule?.ruleName === 'WEB_MASTER'">Web Master, </ng-container>
+            <ng-container *ngIf="rule?.ruleName === 'ADMIN'">Admin, </ng-container>
+          </ng-container>
+        </td>
         <td><button class="button is-small is-warning"><i class="fas fa-edit"></i></button></td>
       </tr>
       </tbody>

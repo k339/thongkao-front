@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {LocalStorageService} from '../../../../services/local-storage.service';
 
 @Component({
   selector: 'app-admin-main',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminMainComponent implements OnInit {
 
-  constructor() { }
+  rules: string[] = [];
+
+  constructor(private localStorageService: LocalStorageService) { }
 
   ngOnInit(): void {
+    this.rules = this.localStorageService.getRules()
   }
 
 }

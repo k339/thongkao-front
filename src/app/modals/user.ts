@@ -3,5 +3,6 @@ export class User {
   email: string;
   username: string;
   password: string;
-  rules: Array<string>;
+  rules: string[];
+  appRules: Array<{id: number, ruleName: string}>;
 }

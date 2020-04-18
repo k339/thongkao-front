@@ -38,7 +38,7 @@ export class AdminUserComponent implements OnInit {
       email: ['', Validators.required],
       username: ['', Validators.required],
       password: ['', Validators.required]
-    })
+    });
   }
 
   showModalCreate() {
@@ -60,6 +60,7 @@ export class AdminUserComponent implements OnInit {
       alert('Success.');
       this.isShowModalCreate = false;
       this.formCreateUser.reset();
+      this.getUserList();
     }, error => {
       alert('error');
     })

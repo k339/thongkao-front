@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PortfolioInfo } from '../../../../modals/portfolio-info';
 import { Portfolio } from '../../../../modals/portfolio';
+import { AdminService } from '../../../../services/admin.service';
 
 @Component({
   selector: 'app-admin-portfolio',
@@ -9,14 +11,34 @@ import { Portfolio } from '../../../../modals/portfolio';
 })
 export class AdminPortfolioComponent implements OnInit {
 
-  portfolioList: Portfolio[] = [];
+  portfolioInfoList: PortfolioInfo[] = [];
+  formCreatePortfolio: FormGroup;
   isShowModalCreate = false;
-  massage = new FormControl('');
   images: File[] = [];
+  portfolio: Portfolio;
 
-  constructor() { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private adminService: AdminService
+  ) { }
 
   ngOnInit(): void {
+    this.initForm();
+    this.getPortFolioList();
+  }
+
+  initForm() {
+    this.formCreatePortfolio = this.formBuilder.group({
+      title: ['', Validators.required],
+      customer: ['', Validators.required],
+      description: ['', Validators.required]
+    });
+  }
+
+  getPortFolioList() {
+    this.adminService.getPortFolioList().subscribe(res => {
+      this.portfolioInfoList = res;
+    });
   }
 
   showModalCreate() {
@@ -36,4 +58,15 @@ export class AdminPortfolioComponent implements OnInit {
     this.images.splice(index,1);
   }
 
+  onSubmit() {
+    this.portfolio = this.formCreatePortfolio.getRawValue();
+    this.portfolio.totalImage = this.images.length;
+    this.adminService.createPortfolio(this.portfolio, this.images).subscribe(res => {
+      alert('Success');
+      this.isShowModalCreate = false;
+      this.getPortFolioList();
+    }, error => {
+      alert('Error');
+    });
+  }
 }
