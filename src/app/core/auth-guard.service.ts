@@ -29,11 +29,15 @@ export class AuthGuardService implements CanActivate{
         return this.adminAccess.includes(state.url);
       }
       if (this.isWebmaster(rules)) {
-        return this.webMasterAccess.includes(state.url);
+        if (this.webMasterAccess.includes(state.url)) {
+          return true
+        }
+        this.router.navigate(['/admin/unauthorized']);
+        return false
       }
     } else {
       this.router.navigate(['/admin/login']);
-      return true;
+      return false;
     }
     return false;
   }

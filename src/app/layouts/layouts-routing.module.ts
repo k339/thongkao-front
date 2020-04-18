@@ -16,7 +16,11 @@ const routes: Routes = [
       {
         path: 'portfolio',
         loadChildren: () => import('../pages/portfolio/portfolio.module').then(m => m.PortfolioModule)
-      }
+      },
+      {
+        path: 'page-not-found',
+        loadChildren: () => import('../pages/page-not-found/page-not-found.module').then(m => m.PageNotFoundModule)
+      },
     ]
   },
   {
@@ -28,6 +32,11 @@ const routes: Routes = [
         loadChildren: () => import('../pages/admin/admin.module').then(m => m.AdminModule)
       }
     ]
+  },
+  {
+    path: '**',
+    redirectTo: '/page-not-found',
+    pathMatch: 'full'
   }
 ];
 

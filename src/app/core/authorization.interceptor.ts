@@ -1,23 +1,28 @@
 import {
   HttpErrorResponse,
   HttpEvent,
-  HttpHandler, HttpHeaders,
+  HttpHandler,
   HttpInterceptor,
   HttpRequest,
   HttpResponse
 } from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 import {Injectable} from '@angular/core';
 import {LocalStorageService} from '../services/local-storage.service';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class AuthorizationInterceptor implements HttpInterceptor{
 
-  constructor(private localStorageService: LocalStorageService) {}
+  constructor(
+    private localStorageService: LocalStorageService,
+    private router: Router
+  ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = this.localStorageService.getToken();
+    req.headers.set('Content-Type', 'application/json')
     if (token && token !== '') {
       req = req.clone({
         headers: req.headers.set('Authorization', token)
@@ -29,12 +34,18 @@ export class AuthorizationInterceptor implements HttpInterceptor{
           console.log('event--->>> ', event);
         }
         return event;
-      }, (err: any) => {
-        if (err instanceof HttpErrorResponse) {
-          if (err.status === 401) {
-            console.log('error--->>> ', err.message);
+      }),
+      catchError((error: HttpErrorResponse) => {
+        if (error instanceof HttpErrorResponse) {
+          if (error.status === 401) {
+            localStorage.clear();
+            this.router.navigate(['/admin/login'])
+          }
+          if (error.status === 403) {
+            this.router.navigate(['/admin/unauthorized'])
           }
         }
+        return throwError(error);
       })
     );
   }

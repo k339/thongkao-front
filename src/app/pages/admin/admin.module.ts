@@ -6,11 +6,18 @@ import { AdminLoginComponent } from './components/admin-login/admin-login.compon
 import { AdminPortfolioComponent } from './components/admin-portfolio/admin-portfolio.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminUserComponent } from './components/admin-user/admin-user.component';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 
 
 
 @NgModule({
-  declarations: [AdminMainComponent, AdminLoginComponent, AdminPortfolioComponent, AdminUserComponent],
+  declarations: [
+    AdminMainComponent,
+    AdminLoginComponent,
+    AdminPortfolioComponent,
+    AdminUserComponent,
+    UnauthorizedComponent
+  ],
   imports: [
     CommonModule,
     AdminRoutingModule,

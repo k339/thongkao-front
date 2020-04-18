@@ -18,12 +18,12 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let item of [1,2,3,4,5,6,7,8,9,10]">
-        <td>1</td>
-        <td>Jon Snow</td>
-        <td>test</td>
-        <td>test@gmail.com</td>
-        <td>Admin, Web master</td>
+      <tr *ngFor="let item of userList; let i = index">
+        <td>{{i+1}}</td>
+        <td>{{item?.name}}</td>
+        <td>{{item?.username}}</td>
+        <td>{{item?.email}}</td>
+        <td>{{item?.rules}}</td>
         <td><button class="button is-small is-warning"><i class="fas fa-edit"></i></button></td>
       </tr>
       </tbody>
@@ -38,63 +38,63 @@
       <button (click)="isShowModalCreate = !isShowModalCreate" class="delete" aria-label="close"></button>
     </header>
     <section class="modal-card-body">
-      <form>
-        <div class="field">
-          <label class="label">Name</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="Jon snow">
-          </div>
+      <form [formGroup]="formCreateUser">
+      <div class="field">
+        <label class="label">Name</label>
+        <div class="control">
+          <input class="input" formControlName="name" type="text" placeholder="Jon snow">
         </div>
+      </div>
 
-        <div class="field">
-          <label class="label">Username</label>
-          <div class="control has-icons-left has-icons-right">
-            <input class="input" type="text" placeholder="jon.snow@gmail.com">
-            <span class="icon is-small is-left">
-              <i class="fas fa-user"></i>
-            </span>
-          </div>
+      <div class="field">
+        <label class="label">Username</label>
+        <div class="control has-icons-left has-icons-right">
+          <input class="input" type="text" formControlName="username" placeholder="jon.snow@gmail.com">
+          <span class="icon is-small is-left">
+            <i class="fas fa-user"></i>
+          </span>
         </div>
+      </div>
 
-        <div class="field">
-          <label class="label">Email</label>
-          <div class="control has-icons-left has-icons-right">
-            <input class="input" type="email" placeholder="Email input">
-            <span class="icon is-small is-left">
-              <i class="fas fa-envelope"></i>
-            </span>
-          </div>
+      <div class="field">
+        <label class="label">Email</label>
+        <div class="control has-icons-left has-icons-right">
+          <input class="input" formControlName="email" type="email" placeholder="Email input">
+          <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+          </span>
         </div>
+      </div>
 
-        <div class="field">
-          <label class="label">Password</label>
-          <div class="control has-icons-left has-icons-right">
-            <input class="input" type="password" placeholder="Password">
-            <span class="icon is-small is-left">
-              <i class="fas fa-lock"></i>
-            </span>
-          </div>
+      <div class="field">
+        <label class="label">Password</label>
+        <div class="control has-icons-left has-icons-right">
+          <input class="input" formControlName="password" type="password" placeholder="Password">
+          <span class="icon is-small is-left">
+            <i class="fas fa-lock"></i>
+          </span>
         </div>
+      </div>
 
-        <div class="field">
-          <label class="label">Rules</label>
-          <div class="control">
-            <label class="checkbox">
-              <input type="checkbox">
-              Admin
-            </label>
-          </div>
-          <div class="control">
-            <label class="checkbox">
-              <input type="checkbox">
-              Web master
-            </label>
-          </div>
+      <div class="field">
+        <label class="label">Rules</label>
+        <div class="control">
+          <label class="checkbox">
+            <input type="checkbox" value="ADMIN" (change)="onCheckChange('ADMIN', $event.target)">
+            Admin
+          </label>
         </div>
+        <div class="control">
+          <label class="checkbox">
+            <input type="checkbox" value="WEB_MASTER" (change)="onCheckChange('WEB_MASTER', $event.target)">
+            Web master
+          </label>
+        </div>
+      </div>
       </form>
     </section>
     <footer class="modal-card-foot">
-      <button class="button is-success" (click)="submit()">Submit</button>
+      <button type="button" (click)="onSubmit()" class="button is-success">Submit</button>
     </footer>
   </div>
 </div>

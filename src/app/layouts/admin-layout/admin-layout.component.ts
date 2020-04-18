@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LocalStorageService} from '../../services/local-storage.service';
 import {StateService} from '../../services/state.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-admin-layout',
@@ -9,15 +10,19 @@ import {StateService} from '../../services/state.service';
 })
 export class AdminLayoutComponent implements OnInit {
 
-  username = '';
+  name = '';
+  isShowDropDownLogout = false;
 
   constructor(
-    private localStorageService: LocalStorageService,
-    private stateService: StateService
+    private localStorageService: LocalStorageService
   ) { }
 
   ngOnInit(): void {
-    this.username = this.localStorageService.getUsername();
+    this.name = this.localStorageService.getUsername();
   }
 
+  logout() {
+    localStorage.clear();
+    window.location.href = '/admin';
+  }
 }

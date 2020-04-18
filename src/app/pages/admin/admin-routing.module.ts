@@ -5,6 +5,7 @@ import {AdminMainComponent} from './components/admin-main/admin-main.component';
 import {AdminPortfolioComponent} from './components/admin-portfolio/admin-portfolio.component';
 import {AdminUserComponent} from './components/admin-user/admin-user.component';
 import {AuthGuardService} from '../../core/auth-guard.service';
+import {UnauthorizedComponent} from './components/unauthorized/unauthorized.component';
 
 const routes: Routes = [
   { path: '',
@@ -31,6 +32,10 @@ const routes: Routes = [
     path: 'login',
     component: AdminLoginComponent,
   },
+  {
+    path: 'unauthorized',
+    component: UnauthorizedComponent,
+  }
 ];
 
 @NgModule({
