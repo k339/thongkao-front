@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { PortfolioInfo } from '../../../../modals/portfolio-info';
-import { Portfolio } from '../../../../modals/portfolio';
 import { AdminService } from '../../../../services/admin.service';
 
 @Component({
@@ -12,10 +11,9 @@ import { AdminService } from '../../../../services/admin.service';
 export class AdminPortfolioComponent implements OnInit {
 
   portfolioInfoList: PortfolioInfo[] = [];
-  formCreatePortfolio: FormGroup;
   isShowModalCreate = false;
-  images: File[] = [];
-  portfolio: Portfolio;
+  isShowModalUpdate = false;
+  id: number = null;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -23,16 +21,7 @@ export class AdminPortfolioComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.initForm();
     this.getPortFolioList();
-  }
-
-  initForm() {
-    this.formCreatePortfolio = this.formBuilder.group({
-      title: ['', Validators.required],
-      customer: ['', Validators.required],
-      description: ['', Validators.required]
-    });
   }
 
   getPortFolioList() {
@@ -45,28 +34,14 @@ export class AdminPortfolioComponent implements OnInit {
     this.isShowModalCreate = true;
   }
 
-  hiddenModalCreate() {
-    this.isShowModalCreate = false;
-    this.images = [];
+  showModalUpdate(id: number) {
+    this.id = id;
+    this.isShowModalUpdate = true;
   }
 
-  handleFileInput(files: FileList) {
-    this.images.push(files[0]);
-  }
-
-  deleteImage(index: number) {
-    this.images.splice(index,1);
-  }
-
-  onSubmit() {
-    this.portfolio = this.formCreatePortfolio.getRawValue();
-    this.portfolio.totalImage = this.images.length;
-    this.adminService.createPortfolio(this.portfolio, this.images).subscribe(res => {
-      alert('Success');
-      this.isShowModalCreate = false;
-      this.getPortFolioList();
-    }, error => {
-      alert('Error');
-    });
+  onSave(b: boolean) {
+    this.getPortFolioList();
+    this.isShowModalCreate = b;
+    this.isShowModalUpdate = b;
   }
 }

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {PortfolioInfo} from '../../../../modals/portfolio-info';
+import {environment} from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-portfolio-card',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PortfolioCardComponent implements OnInit {
 
+  @Input()
+  portfolioInfo: PortfolioInfo
+  image = ``;
+
   constructor() { }
 
   ngOnInit(): void {
+    if (this.portfolioInfo) {
+      this.image = `${environment.apiUrl}/common/file/` + this.portfolioInfo.files[0].name;
+    }
   }
 
 }

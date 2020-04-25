@@ -13,19 +13,19 @@
   <div class="columns">
     <div class="column">
       <div class="description">
-        ติดตั้งสายเคเบิลทองแดง เส้นหลักให้กับบริษัท ทีโอที จำกัด(มหาชน) ขนาด 2,400 คู่สาย ในอำเภอเมือง จังหวัดสงขลา
+        {{portfolioInfo?.title}}<br>
+        {{portfolioInfo?.description}}
       </div>
       <div class="tags">
-        <i class="far fa-handshake"></i> <label>บริษัท ทีโอที จำกัด(มหาชน)</label>
+        <i class="far fa-handshake"></i> <label>{{portfolioInfo?.customer}}</label>
       </div>
     </div>
   </div>
   <div class="columns is-multiline last-data">
-    <div class="column is-6-desktop is-12-mobile">
-      <img class="image" src="assets/images/02.jpg">
-    </div>
-    <div class="column is-6-desktop is-12-mobile">
-      <img class="image" src="assets/images/03.jpg">
-    </div>
+    <ng-container *ngFor="let item of portfolioInfo?.files">
+      <div class="column is-6-desktop is-12-mobile">
+        <img class="image" [src]="baseImageUrl + item?.name">
+      </div>
+    </ng-container>
   </div>
 </div>

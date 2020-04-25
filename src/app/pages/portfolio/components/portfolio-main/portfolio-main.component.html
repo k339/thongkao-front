@@ -4,8 +4,8 @@
       <div class="section-3">
         <div class="title-section-3">ผลงานของบริษัททั้งหมด</div>
         <div class="columns is-multiline portfolio">
-          <div *ngFor="let item of [1,2,3,4,5,6,7,8,9,10]" class="column is-3-desktop is-12-mobile">
-            <app-portfolio-card></app-portfolio-card>
+          <div *ngFor="let item of portfolioInfoList" class="column is-3-desktop is-12-mobile">
+            <app-portfolio-card *ngIf="item" [portfolioInfo]="item"></app-portfolio-card>
           </div>
         </div>
       </div>

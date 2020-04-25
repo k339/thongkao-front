@@ -38,10 +38,10 @@ export class AuthorizationInterceptor implements HttpInterceptor{
         if (error instanceof HttpErrorResponse) {
           if (error.status === 401) {
             localStorage.clear();
-            this.router.navigate(['/admin/login'])
+            window.location.href = '/admin/login';
           }
           if (error.status === 403) {
-            this.router.navigate(['/admin/unauthorized'])
+            this.router.navigate(['/admin/unauthorized']);
           }
         }
         return throwError(error);

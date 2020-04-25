@@ -7,6 +7,8 @@ import { AdminPortfolioComponent } from './components/admin-portfolio/admin-port
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminUserComponent } from './components/admin-user/admin-user.component';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
+import { CreatePortfolioComponent } from './components/create-portfolio/create-portfolio.component';
+import { UpdatePortfolioComponent } from './components/update-portfolio/update-portfolio.component';
 
 
 
@@ -16,7 +18,9 @@ import { UnauthorizedComponent } from './components/unauthorized/unauthorized.co
     AdminLoginComponent,
     AdminPortfolioComponent,
     AdminUserComponent,
-    UnauthorizedComponent
+    UnauthorizedComponent,
+    CreatePortfolioComponent,
+    UpdatePortfolioComponent
   ],
   imports: [
     CommonModule,

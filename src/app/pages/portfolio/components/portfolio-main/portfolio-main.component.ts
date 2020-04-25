@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {PortfolioInfo} from '../../../../modals/portfolio-info';
+import {PortfolioService} from '../../../../services/portfolio.service';
 
 @Component({
   selector: 'app-portfolio-main',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PortfolioMainComponent implements OnInit {
 
-  constructor() { }
+  portfolioInfoList: PortfolioInfo[] = [];
+
+  constructor(private portfolioService: PortfolioService) { }
 
   ngOnInit(): void {
+    this.getPortfolioList();
+  }
+
+  getPortfolioList() {
+    this.portfolioService.getPortfolioList().subscribe(res => {
+      this.portfolioInfoList = res;
+    });
   }
 
 }

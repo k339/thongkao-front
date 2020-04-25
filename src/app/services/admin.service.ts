@@ -27,8 +27,12 @@ export class AdminService {
     return this.http.get<User[]>(`${environment.apiUrl}/admin/app-user/list`);
   }
 
+  getPortfolio(id: number): Observable<PortfolioInfo> {
+    return this.http.get<PortfolioInfo>(`${environment.apiUrl}/admin/portfolio/${id}`);
+  }
+
   getPortFolioList(): Observable<PortfolioInfo[]> {
-    return this.http.get<PortfolioInfo[]>(`${environment.apiUrl}/admin/portfolio/list`)
+    return this.http.get<PortfolioInfo[]>(`${environment.apiUrl}/admin/portfolio/list`);
   }
 
   createPortfolio(portfolio: Portfolio, images: File[]): Observable<any> {
@@ -38,5 +42,18 @@ export class AdminService {
       formData.append('image' + i, images[i]);
     }
     return this.http.post(`${environment.apiUrl}/admin/portfolio/create`, formData);
+  }
+
+  updatePortfolio(portfolio: Portfolio, images: File[]): Observable<any> {
+    const formData = new FormData();
+    formData.append('data', JSON.stringify(portfolio));
+    for (let i = 0; i < images.length; i++) {
+      formData.append('image' + i, images[i]);
+    }
+    return this.http.post(`${environment.apiUrl}/admin/portfolio/update`, formData);
+  }
+
+  deletePortfolio(id: number): Observable<any> {
+    return this.http.delete(`${environment.apiUrl}/admin/portfolio/delete/${id}`);
   }
 }

@@ -1,0 +1,56 @@
+<div class="modal" [ngClass]="{'is-active': isShowModalCreate}">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Create Portfolio</p>
+      <button (click)="hiddenModalCreate()" class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <form [formGroup]="formCreatePortfolio">
+        <div class="field">
+          <label class="label">Title</label>
+          <div class="control">
+            <input class="input" type="text" formControlName="title" placeholder="Title">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Customer</label>
+          <div class="control">
+            <input class="input" type="text" formControlName="customer" placeholder="Customer">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Message</label>
+          <div class="control">
+            <label>
+              <textarea formControlName="description" class="textarea" placeholder="Textarea"></textarea>
+            </label>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Images</label>
+          <div *ngFor="let image of images; let i = index" [attr.data-index]="i" class="notification is-link is-light navbar-menu">
+            <span class="navbar-start">{{image.name}}</span>
+            <button (click)="deleteImage(i)" class="button is-small is-danger navbar-end"><i class="fas fa-minus-circle"></i></button>
+          </div>
+        </div>
+        <div class="file has-name is-right">
+          <label class="file-label">
+            <input class="file-input" type="file" name="file-image" (change)="handleFileInput($event.target.files)">
+            <span class="file-cta">
+              <span class="file-icon">
+                <i class="fas fa-upload"></i>
+              </span>
+            </span>
+            <span class="file-name">
+              Choose a file…
+            </span>
+          </label>
+        </div>
+      </form>
+    </section>
+    <footer class="modal-card-foot">
+      <button type="button" class="button is-success" (click)="onSubmit()">Submit</button>
+    </footer>
+  </div>
+</div>

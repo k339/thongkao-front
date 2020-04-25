@@ -1,11 +1,11 @@
 export class PortfolioInfo {
-  id: string;
+  id: number;
   title: string;
   customer: string;
   description: string;
   files: File[];
 }
  export class File {
-  id: string;
-  fileName: string;
- }
+  id: number;
+  name: string;
+}
