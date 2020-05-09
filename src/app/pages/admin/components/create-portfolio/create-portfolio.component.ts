@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Portfolio} from '../../../../modals/portfolio';
 import {AdminService} from '../../../../services/admin.service';
@@ -8,7 +8,7 @@ import {AdminService} from '../../../../services/admin.service';
   templateUrl: './create-portfolio.component.html',
   styleUrls: ['./create-portfolio.component.scss']
 })
-export class CreatePortfolioComponent implements OnInit {
+export class CreatePortfolioComponent implements OnInit, OnChanges {
 
   @Input()
   isShowModalCreate = false;
@@ -24,6 +24,9 @@ export class CreatePortfolioComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
     this.initForm();
   }
 
