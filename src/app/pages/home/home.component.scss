@@ -72,6 +72,9 @@
   font-size: 24px;
   font-weight: bold;
   color: #333333;
+  @media only screen and (max-width: 414px) {
+    padding-left: 20px;
+  }
 }
 .portfolio {
   padding-top: 20px;

@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
 
   getPortfolioList() {
     this.portfolioService.getPortfolioList().subscribe(res => {
-      this.portfolioInfoList = res.slice(0, 4);
+      this.portfolioInfoList = res.slice(0, 8);
     });
   }
 }
