@@ -18,6 +18,18 @@ const routes: Routes = [
         loadChildren: () => import('../pages/portfolio/portfolio.module').then(m => m.PortfolioModule)
       },
       {
+        path: 'award',
+        loadChildren: () => import('../pages/award/award.module').then(m => m.AwardModule)
+      },
+      {
+        path: 'company-profile',
+        loadChildren: () => import('../pages/company-profile/company-profile.module').then(m => m.CompanyProfileModule)
+      },
+      {
+        path: 'organization',
+        loadChildren: () => import('../pages/organization/organization.module').then(m => m.OrganizationModule)
+      },
+      {
         path: 'page-not-found',
         loadChildren: () => import('../pages/page-not-found/page-not-found.module').then(m => m.PageNotFoundModule)
       },
